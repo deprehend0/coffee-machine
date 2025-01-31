@@ -19,8 +19,7 @@ public class Main {
         result = value1 * value2;
         break;
       case 'd':
-        if (value2 != 0)
-          result = value1 / value2;
+        result = value2 != 0 ? value1 / value2 : 0;
         break;
       default:
         System.out.println("Invalid opCode: " + opCode);
