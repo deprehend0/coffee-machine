@@ -3,29 +3,33 @@ package deprehend0.calcengine;
 public class Main {
 
   public static void main(String[] args) {
-    double value1 = 100d;
-    double value2 = 2d;
-    double result = 0d;
-    char opCode = 'd'; // Operation code (a: add, s: subtract, m: multiply, d: divide)
+    double[] leftVals = {100d, 25d, 225d, 11d};
+    double[] rightVals = {50d, 92, 17, 3};
+    char[] opCodes = {'d', 'a', 's', 'm'};
+    double[] results = new double[opCodes.length];
 
-    switch(opCode){
-      case 'a':
-        result = value1 + value2;
-        break;
-      case 's':
-        result = value1 - value2;
-        break;
-      case 'm':
-        result = value1 * value2;
-        break;
-      case 'd':
-        result = value2 != 0 ? value1 / value2 : 0;
-        break;
-      default:
-        System.out.println("Invalid opCode: " + opCode);
-        result = 0.0d;
+    for(int i = 0; i < opCodes.length; i ++) {
+      switch (opCodes[i]) {
+        case 'a':
+          results[i] = leftVals[i] + rightVals[i];
+          break;
+        case 's':
+          results[i] = leftVals[i] - rightVals[i];
+          break;
+        case 'm':
+          results[i] = leftVals[i] * rightVals[i];
+          break;
+        case 'd':
+          results[i] = rightVals[i] != 0 ? leftVals[i] / rightVals[i] : 0;
+          break;
+        default:
+          System.out.println("Invalid opCode: " + opCodes[i]);
+          results[i] = 0.0d;
+      }
     }
 
-    System.out.println(result);
+    for (double result : results) {
+      System.out.println(result);
+    }
   }
 }
