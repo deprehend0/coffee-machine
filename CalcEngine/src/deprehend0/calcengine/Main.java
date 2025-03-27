@@ -5,25 +5,30 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
-    double[] leftVals = {100d, 25d, 225d, 11d};
-    double[] rightVals = {50d, 92, 17, 3};
-    char[] opCodes = {'d', 'a', 's', 'm'};
-    double[] results = new double[opCodes.length];
 
     if (args.length == 0) {
-      for (int i = 0; i < opCodes.length; i++) {
-        results[i] = execute(opCodes[i], leftVals[i], rightVals[i]);
-      }
-
-      for (double result : results) {
-        System.out.println(result);
-      }
+      performCalculations();
     } else if (args.length == 3) {
       handleCommandLine(args);
     } else if (args.length == 1 && args[0].equals("interactive")) {
       executeInteractively();
     } else {
       System.out.println("Please provide an operation code (a, d, s, m) and 2 numeric values");
+    }
+  }
+
+  private static void performCalculations() {
+    double[] leftVals = {100d, 25d, 225d, 11d};
+    double[] rightVals = {50d, 92, 17, 3};
+    char[] opCodes = {'d', 'a', 's', 'm'};
+    double[] results = new double[opCodes.length];
+
+    for (int i = 0; i < opCodes.length; i++) {
+      results[i] = execute(opCodes[i], leftVals[i], rightVals[i]);
+    }
+
+    for (double result : results) {
+      System.out.println(result);
     }
   }
 
