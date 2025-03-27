@@ -40,7 +40,35 @@ public class Main {
     double leftVal = valueFromWord(parts[1]);
     double rightVal = valueFromWord(parts[2]);
     double result = execute(opCode, leftVal, rightVal);
+    displayResult(opCode, leftVal, rightVal, result);
     System.out.println(result);
+  }
+
+  private static void displayResult(char opCode, double leftVal, double rightVal, double result) {
+    char symbol = symbolFromOpCode(opCode);
+    StringBuilder builder = new StringBuilder(20);
+    builder.append(leftVal);
+    builder.append(" ");
+    builder.append(symbol);
+    builder.append(" ");
+    builder.append(rightVal);
+    builder.append(" = ");
+    builder.append(result);
+    String output = builder.toString();
+    System.out.println(output);
+  }
+
+  private static char symbolFromOpCode(char opCode) {
+    char[] opCodes = {'a', 's', 'm', 'd'};
+    char[] symbols = {'+', '-', '*', '/'};
+    char symbol = ' ';
+    for (int i = 0; i < opCodes.length; i ++) {
+      if (opCode == opCodes[i]) {
+        symbol = symbols[i];
+        break;
+      }
+    }
+    return symbol;
   }
 
   static void handleCommandLine(String[] args) {
@@ -78,6 +106,7 @@ public class Main {
     char opCode = operationName.charAt(0);
     return opCode;
   }
+
 
   static double valueFromWord(String word) {
     String[] numberWords = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
