@@ -1,12 +1,13 @@
 package deprehend0.calcengine;
 
-import javax.swing.JOptionPane;
-
 public class MathEquation {
     private double leftVal;
     private double rightVal;
     private char opCode;
     private double result;
+
+    private static int numberOfCalculations;
+    private static double sumOfResults;
 
     public MathEquation(char opCode) {
         this.opCode = opCode;
@@ -36,6 +37,12 @@ public class MathEquation {
                 System.out.println("Invalid opCode: " + opCode);
                 result = 0.0d;
         }
+        numberOfCalculations ++;
+        sumOfResults += result;
+    }
+
+    public static double getAverageResult() {
+        return sumOfResults / numberOfCalculations;
     }
 
     public void setLeftVal(double leftVal) {
