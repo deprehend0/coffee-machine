@@ -55,6 +55,31 @@ public class MathEquation {
         result = (int) result;
     }
 
+    public String toString() {
+        char symbol = symbolFromOpCode();
+        String output = leftVal
+            + " "
+            + symbol
+            + " "
+            + rightVal
+            + " = "
+            + result;
+        return output;
+    }
+
+    public char symbolFromOpCode() {
+        char[] opCodes = {'a', 's', 'm', 'd'};
+        char[] symbols = {'+', '-', '*', '/'};
+        char symbol = ' ';
+        for (int i = 0; i < opCodes.length; i++) {
+            if (opCode == opCodes[i]) {
+                symbol = symbols[i];
+                break;
+            }
+        }
+        return symbol;
+    }
+
     public static double getAverageResult() {
         return sumOfResults / numberOfCalculations;
     }

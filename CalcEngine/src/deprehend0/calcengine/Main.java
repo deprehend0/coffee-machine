@@ -26,12 +26,12 @@ public class Main {
 
         for (MathEquation equation: equations) {
             equation.execute();
-            System.out.println("result = " + equation.getResult());
+            System.out.println(equation);
         }
 
         System.out.println("Average result = " + MathEquation.getAverageResult());
 
-        useOverloads();
+//        useOverloads();
     }
 
     private static void useOverloads() {
