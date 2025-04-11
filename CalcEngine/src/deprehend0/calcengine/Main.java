@@ -18,17 +18,15 @@ public class Main {
     }
 
     private static void performCalculations() {
-        double[] leftVals = {100d, 25d, 225d, 11d};
-        double[] rightVals = {50d, 92, 17, 3};
-        char[] opCodes = {'d', 'a', 's', 'm'};
-        double[] results = new double[opCodes.length];
+        MathEquation[] equations = new MathEquation[4];
+        equations[0] = create(100d, 50d, 'd');
+        equations[1] = create(25d, 92d, 'a');
+        equations[2] = create(225d, 17d, 's');
+        equations[3] = create(11d, 3d, 'm');
 
-        for (int i = 0; i < opCodes.length; i++) {
-            results[i] = execute(opCodes[i], leftVals[i], rightVals[i]);
-        }
-
-        for (double result : results) {
-            System.out.println(result);
+        for (MathEquation equation: equations) {
+            equation.execute();
+            System.out.println("result = " + equation.result);
         }
     }
 
@@ -38,6 +36,14 @@ public class Main {
         String userInput = scanner.nextLine();
         String[] parts = userInput.split(" ");
         performOperation(parts);
+    }
+
+    private static MathEquation create(double leftVal, double rightVal, char opCode) {
+        MathEquation equation = new MathEquation();
+        equation.leftVal = leftVal;
+        equation.rightVal = rightVal;
+        equation.opCode = opCode;
+        return equation;
     }
 
     private static void performOperation(String[] parts) {
@@ -51,15 +57,13 @@ public class Main {
 
     private static void displayResult(char opCode, double leftVal, double rightVal, double result) {
         char symbol = symbolFromOpCode(opCode);
-        StringBuilder builder = new StringBuilder(20);
-        builder.append(leftVal);
-        builder.append(" ");
-        builder.append(symbol);
-        builder.append(" ");
-        builder.append(rightVal);
-        builder.append(" = ");
-        builder.append(result);
-        String output = builder.toString();
+        String output = leftVal
+            + " "
+            + symbol
+            + " "
+            + rightVal
+            + " = "
+            + result;
         System.out.println(output);
     }
 
