@@ -13,7 +13,7 @@ public class Main {
             executeInteractively();
         } else {
             System.out.println(
-                "Please provide an operation code (a, d, s, m) and 2 numeric values");
+                "Please provide an operation and 2 numeric values");
         }
     }
 
