@@ -63,9 +63,9 @@ public class Main {
         char opCode = opCodeFromString(parts[0]);
         double leftVal = valueFromWord(parts[1]);
         double rightVal = valueFromWord(parts[2]);
-        double result = execute(opCode, leftVal, rightVal);
-        displayResult(opCode, leftVal, rightVal, result);
-        System.out.println(result);
+        MathEquation equation = new MathEquation(leftVal, rightVal, opCode);
+        equation.execute();
+        System.out.println(equation);
     }
 
     private static void displayResult(char opCode, double leftVal, double rightVal, double result) {
@@ -131,15 +131,20 @@ public class Main {
 
 
     static double valueFromWord(String word) {
-        String[] numberWords = {"zero", "one", "two", "three", "four", "five", "six", "seven",
-            "eight",
-            "nine"};
+        String[] numberWords = {
+            "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        boolean isValueSet = false;
         double value = 0;
         for (int index = 0; index < numberWords.length; index++) {
             if (word.equals(numberWords[index])) {
                 value = index;
+                isValueSet = true;
                 break;
             }
+        }
+
+        if (!isValueSet) {
+            value = Double.parseDouble(word);
         }
         return value;
     }
