@@ -8,7 +8,7 @@ public class Main {
         if (args.length == 0) {
             performCalculations();
         } else if (args.length == 3) {
-            handleCommandLine(args);
+            performOperation(args);
         } else if (args.length == 1 && args[0].equals("interactive")) {
             executeInteractively();
         } else {
@@ -66,62 +66,6 @@ public class Main {
         MathEquation equation = new MathEquation(leftVal, rightVal, opCode);
         equation.execute();
         System.out.println(equation);
-    }
-
-    private static void displayResult(char opCode, double leftVal, double rightVal, double result) {
-        char symbol = symbolFromOpCode(opCode);
-        String output = leftVal
-            + " "
-            + symbol
-            + " "
-            + rightVal
-            + " = "
-            + result;
-        System.out.println(output);
-    }
-
-    private static char symbolFromOpCode(char opCode) {
-        char[] opCodes = {'a', 's', 'm', 'd'};
-        char[] symbols = {'+', '-', '*', '/'};
-        char symbol = ' ';
-        for (int i = 0; i < opCodes.length; i++) {
-            if (opCode == opCodes[i]) {
-                symbol = symbols[i];
-                break;
-            }
-        }
-        return symbol;
-    }
-
-    static void handleCommandLine(String[] args) {
-        char opCode = args[0].charAt(0);
-        double leftVal = Double.parseDouble(args[1]);
-        double rightVal = Double.parseDouble(args[2]);
-
-        double result = execute(opCode, leftVal, rightVal);
-        System.out.println(result);
-    }
-
-    static double execute(char opCode, double leftVal, double rightVal) {
-        double result;
-        switch (opCode) {
-            case 'a':
-                result = leftVal + rightVal;
-                break;
-            case 's':
-                result = leftVal - rightVal;
-                break;
-            case 'm':
-                result = leftVal * rightVal;
-                break;
-            case 'd':
-                result = rightVal != 0 ? leftVal / rightVal : 0;
-                break;
-            default:
-                System.out.println("Invalid opCode: " + opCode);
-                result = 0.0d;
-        }
-        return result;
     }
 
 
