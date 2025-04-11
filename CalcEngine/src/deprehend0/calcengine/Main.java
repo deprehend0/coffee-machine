@@ -19,10 +19,10 @@ public class Main {
 
     private static void performCalculations() {
         MathEquation[] equations = new MathEquation[4];
-        equations[0] = new MathEquation(100d, 50d, 'd');
-        equations[1] = new MathEquation(25d, 92d, 'a');
-        equations[2] = new MathEquation(225d, 17d, 's');
-        equations[3] = new MathEquation(11d, 3d, 'm');
+        equations[0] = new MathEquation(100d, 50d, MathOperation.DIVIDE);
+        equations[1] = new MathEquation(25d, 92d, MathOperation.ADD);
+        equations[2] = new MathEquation(225d, 17d, MathOperation.SUBTRACT);
+        equations[3] = new MathEquation(11d, 3d, MathOperation.MULTIPLY);
 
         for (MathEquation equation: equations) {
             equation.execute();
@@ -39,7 +39,7 @@ public class Main {
         System.out.println("Using execute overloads");
         System.out.println();
 
-        MathEquation equationOverload = new MathEquation('d');
+        MathEquation equationOverload = new MathEquation(MathOperation.DIVIDE);
         double leftDouble = 9.0d;
         double rightDouble = 4.0d;
         equationOverload.execute(leftDouble, rightDouble);
@@ -60,7 +60,7 @@ public class Main {
     }
 
     private static void performOperation(String[] parts) {
-        char opCode = opCodeFromString(parts[0]);
+        MathOperation opCode = MathOperation.valueOf(parts[0].toUpperCase());
         double leftVal = valueFromWord(parts[1]);
         double rightVal = valueFromWord(parts[2]);
         MathEquation equation = new MathEquation(leftVal, rightVal, opCode);
@@ -122,11 +122,6 @@ public class Main {
                 result = 0.0d;
         }
         return result;
-    }
-
-    static char opCodeFromString(String operationName) {
-        char opCode = operationName.charAt(0);
-        return opCode;
     }
 
 
