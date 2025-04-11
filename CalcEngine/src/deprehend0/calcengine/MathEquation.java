@@ -1,10 +1,22 @@
 package deprehend0.calcengine;
 
+import javax.swing.JOptionPane;
+
 public class MathEquation {
     private double leftVal;
     private double rightVal;
     private char opCode;
     private double result;
+
+    public MathEquation(char opCode) {
+        this.opCode = opCode;
+    }
+
+    public MathEquation(double leftVal, double rightVal, char opCode) {
+        this(opCode);
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+    }
 
     void execute() {
         switch (opCode) {

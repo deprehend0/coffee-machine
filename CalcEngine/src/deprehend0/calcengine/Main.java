@@ -19,10 +19,10 @@ public class Main {
 
     private static void performCalculations() {
         MathEquation[] equations = new MathEquation[4];
-        equations[0] = create(100d, 50d, 'd');
-        equations[1] = create(25d, 92d, 'a');
-        equations[2] = create(225d, 17d, 's');
-        equations[3] = create(11d, 3d, 'm');
+        equations[0] = new MathEquation(100d, 50d, 'd');
+        equations[1] = new MathEquation(25d, 92d, 'a');
+        equations[2] = new MathEquation(225d, 17d, 's');
+        equations[3] = new MathEquation(11d, 3d, 'm');
 
         for (MathEquation equation: equations) {
             equation.execute();
@@ -36,14 +36,6 @@ public class Main {
         String userInput = scanner.nextLine();
         String[] parts = userInput.split(" ");
         performOperation(parts);
-    }
-
-    private static MathEquation create(double leftVal, double rightVal, char opCode) {
-        MathEquation equation = new MathEquation();
-        equation.setLeftVal(leftVal);
-        equation.setRightVal(rightVal);
-        equation.setOpCode(opCode);
-        return equation;
     }
 
     private static void performOperation(String[] parts) {
