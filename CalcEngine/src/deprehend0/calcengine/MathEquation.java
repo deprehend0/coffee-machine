@@ -1,10 +1,10 @@
 package deprehend0.calcengine;
 
 public class MathEquation {
-    double leftVal;
-    double rightVal;
-    char opCode;
-    double result;
+    private double leftVal;
+    private double rightVal;
+    private char opCode;
+    private double result;
 
     void execute() {
         switch (opCode) {
@@ -24,5 +24,21 @@ public class MathEquation {
                 System.out.println("Invalid opCode: " + opCode);
                 result = 0.0d;
         }
+    }
+
+    public void setLeftVal(double leftVal) {
+        this.leftVal = leftVal;
+    }
+
+    public void setRightVal(double rightVal) {
+        this.rightVal = rightVal;
+    }
+
+    public void setOpCode(char opCode) {
+        this.opCode = opCode;
+    }
+
+    public double getResult() {
+        return result;
     }
 }
