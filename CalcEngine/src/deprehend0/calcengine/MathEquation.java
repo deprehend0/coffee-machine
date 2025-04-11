@@ -55,6 +55,7 @@ public class MathEquation {
         result = (int) result;
     }
 
+    @Override
     public String toString() {
         char symbol = opCode.getSymbol();
         String output = leftVal
