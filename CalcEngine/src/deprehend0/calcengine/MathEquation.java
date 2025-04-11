@@ -56,7 +56,7 @@ public class MathEquation {
     }
 
     public String toString() {
-        char symbol = symbolFromOpCode();
+        char symbol = opCode.getSymbol();
         String output = leftVal
             + " "
             + symbol
@@ -65,19 +65,6 @@ public class MathEquation {
             + " = "
             + result;
         return output;
-    }
-
-    public char symbolFromOpCode() {
-        MathOperation[] opCodes = {MathOperation.ADD, MathOperation.SUBTRACT, MathOperation.MULTIPLY, MathOperation.DIVIDE};
-        char[] symbols = {'+', '-', '*', '/'};
-        char symbol = ' ';
-        for (int i = 0; i < opCodes.length; i++) {
-            if (opCode == opCodes[i]) {
-                symbol = symbols[i];
-                break;
-            }
-        }
-        return symbol;
     }
 
     public static double getAverageResult() {
