@@ -31,6 +31,10 @@ public class Main {
 
         System.out.println("Average result = " + MathEquation.getAverageResult());
 
+        useOverloads();
+    }
+
+    private static void useOverloads() {
         System.out.println();
         System.out.println("Using execute overloads");
         System.out.println();
